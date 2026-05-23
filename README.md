@@ -2,7 +2,9 @@
 
 A responsive, multi-step course registration and survey form built with **HTML**, **CSS**, and **JavaScript** — no frameworks required.
 
-**GitHub:** https://github.com/abhijeetsinghdevgan/challenge-082-responsive-form
+**Live Demo:** https://abhijeetsinghdevgan.github.io/challenge-082-responsive-form/
+
+**GitHub Repo:** https://github.com/abhijeetsinghdevgan/challenge-082-responsive-form
 
 ---
 

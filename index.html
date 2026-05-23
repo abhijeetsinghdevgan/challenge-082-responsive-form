@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Course registration and survey form">
+  <title>Course Registration | Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="header__brand">
+        <span class="header__logo" aria-hidden="true">◆</span>
+        <span class="header__name">LearnPath</span>
+      </div>
+      <p class="header__tagline">Register for courses &amp; share your feedback</p>
+    </header>
+
+    <main class="main">
+      <form id="registration-form" class="form" novalidate>
+        <div class="form__progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3" aria-label="Form progress">
+          <div class="form__progress-bar" id="progress-bar"></div>
+          <ol class="form__steps">
+            <li class="form__step form__step--active" data-step="1">Personal</li>
+            <li class="form__step" data-step="2">Course</li>
+            <li class="form__step" data-step="3">Survey</li>
+          </ol>
+        </div>
+
+        <!-- Step 1: Personal Information -->
+        <fieldset class="form__panel form__panel--active" data-panel="1">
+          <legend class="form__legend">Personal information</legend>
+          <p class="form__intro">Tell us who you are so we can send your confirmation.</p>
+
+          <div class="form__row">
+            <div class="form__group">
+              <label for="first-name">First name <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="first-name" name="firstName" autocomplete="given-name" required minlength="2" placeholder="Jane">
+              <span class="form__error" id="error-first-name" role="alert"></span>
+            </div>
+            <div class="form__group">
+              <label for="last-name">Last name <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="last-name" name="lastName" autocomplete="family-name" required minlength="2" placeholder="Doe">
+              <span class="form__error" id="error-last-name" role="alert"></span>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <label for="email">Email address <span class="required" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required placeholder="jane@example.com">
+            <span class="form__error" id="error-email" role="alert"></span>
+          </div>
+
+          <div class="form__group">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 (555) 000-0000" pattern="[\d\s\-\+\(\)]{10,}">
+            <span class="form__hint">Optional — for course reminders</span>
+            <span class="form__error" id="error-phone" role="alert"></span>
+          </div>
+
+          <div class="form__group">
+            <label for="dob">Date of birth</label>
+            <input type="date" id="dob" name="dob" max="">
+            <span class="form__error" id="error-dob" role="alert"></span>
+          </div>
+        </fieldset>
+
+        <!-- Step 2: Course Selection -->
+        <fieldset class="form__panel" data-panel="2" hidden>
+          <legend class="form__legend">Course selection</legend>
+          <p class="form__intro">Choose the program you want to join.</p>
+
+          <div class="form__group">
+            <span class="form__label">Course track <span class="required" aria-hidden="true">*</span></span>
+            <div class="form__cards" role="radiogroup" aria-labelledby="course-track-label">
+              <span id="course-track-label" class="visually-hidden">Select a course track</span>
+              <label class="course-card">
+                <input type="radio" name="course" value="web-dev" required>
+                <span class="course-card__content">
+                  <span class="course-card__icon" aria-hidden="true">⌨</span>
+                  <span class="course-card__title">Web Development</span>
+                  <span class="course-card__meta">12 weeks · Beginner</span>
+                </span>
+              </label>
+              <label class="course-card">
+                <input type="radio" name="course" value="data-science">
+                <span class="course-card__content">
+                  <span class="course-card__icon" aria-hidden="true">📊</span>
+                  <span class="course-card__title">Data Science</span>
+                  <span class="course-card__meta">16 weeks · Intermediate</span>
+                </span>
+              </label>
+              <label class="course-card">
+                <input type="radio" name="course" value="ux-design">
+                <span class="course-card__content">
+                  <span class="course-card__icon" aria-hidden="true">✎</span>
+                  <span class="course-card__title">UX Design</span>
+                  <span class="course-card__meta">10 weeks · All levels</span>
+                </span>
+              </label>
+            </div>
+            <span class="form__error" id="error-course" role="alert"></span>
+          </div>
+
+          <div class="form__group">
+            <label for="start-date">Preferred start date <span class="required" aria-hidden="true">*</span></label>
+            <select id="start-date" name="startDate" required>
+              <option value="">Select a cohort</option>
+              <option value="2026-06-01">June 2026</option>
+              <option value="2026-09-01">September 2026</option>
+              <option value="2026-01-01">January 2027</option>
+            </select>
+            <span class="form__error" id="error-start-date" role="alert"></span>
+          </div>
+
+          <div class="form__group">
+            <span class="form__label">Learning format</span>
+            <div class="form__chips">
+              <label class="chip">
+                <input type="radio" name="format" value="online" checked>
+                <span>Online</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="format" value="hybrid">
+                <span>Hybrid</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="format" value="in-person">
+                <span>In-person</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form__group form__group--checkbox">
+            <label class="checkbox">
+              <input type="checkbox" id="terms" name="terms" required>
+              <span class="checkbox__box" aria-hidden="true"></span>
+              <span>I agree to the <a href="#" class="link">terms of service</a> and <a href="#" class="link">privacy policy</a> <span class="required" aria-hidden="true">*</span></span>
+            </label>
+            <span class="form__error" id="error-terms" role="alert"></span>
+          </div>
+        </fieldset>
+
+        <!-- Step 3: Survey -->
+        <fieldset class="form__panel" data-panel="3" hidden>
+          <legend class="form__legend">Quick survey</legend>
+          <p class="form__intro">Help us tailor your experience (optional fields marked).</p>
+
+          <div class="form__group">
+            <label for="experience">Prior experience in this field</label>
+            <select id="experience" name="experience">
+              <option value="">Select one</option>
+              <option value="none">No experience</option>
+              <option value="some">Some self-study</option>
+              <option value="professional">Professional experience</option>
+            </select>
+          </div>
+
+          <div class="form__group">
+            <span class="form__label">How did you hear about us?</span>
+            <div class="form__checks">
+              <label class="checkbox checkbox--inline">
+                <input type="checkbox" name="referral" value="social">
+                <span class="checkbox__box" aria-hidden="true"></span>
+                <span>Social media</span>
+              </label>
+              <label class="checkbox checkbox--inline">
+                <input type="checkbox" name="referral" value="friend">
+                <span class="checkbox__box" aria-hidden="true"></span>
+                <span>Friend or colleague</span>
+              </label>
+              <label class="checkbox checkbox--inline">
+                <input type="checkbox" name="referral" value="search">
+                <span class="checkbox__box" aria-hidden="true"></span>
+                <span>Search engine</span>
+              </label>
+              <label class="checkbox checkbox--inline">
+                <input type="checkbox" name="referral" value="other">
+                <span class="checkbox__box" aria-hidden="true"></span>
+                <span>Other</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <label for="goals">What do you hope to achieve? <span class="form__optional">(optional)</span></label>
+            <textarea id="goals" name="goals" rows="4" maxlength="500" placeholder="Share your learning goals…"></textarea>
+            <span class="form__char-count"><span id="char-count">0</span> / 500</span>
+          </div>
+
+          <div class="form__group">
+            <span class="form__label">Overall satisfaction with our website</span>
+            <div class="rating" role="group" aria-label="Rate satisfaction from 1 to 5">
+              <input type="radio" name="rating" id="rating-5" value="5">
+              <label for="rating-5" title="Excellent">★</label>
+              <input type="radio" name="rating" id="rating-4" value="4">
+              <label for="rating-4" title="Good">★</label>
+              <input type="radio" name="rating" id="rating-3" value="3">
+              <label for="rating-3" title="Average">★</label>
+              <input type="radio" name="rating" id="rating-2" value="2">
+              <label for="rating-2" title="Poor">★</label>
+              <input type="radio" name="rating" id="rating-1" value="1">
+              <label for="rating-1" title="Very poor">★</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form__actions">
+          <button type="button" class="btn btn--ghost" id="btn-prev" hidden>Back</button>
+          <button type="button" class="btn btn--primary" id="btn-next">Continue</button>
+          <button type="submit" class="btn btn--primary" id="btn-submit" hidden>Submit registration</button>
+        </div>
+      </form>
+
+      <aside class="summary" id="summary" aria-live="polite">
+        <h2 class="summary__title">Your selection</h2>
+        <dl class="summary__list" id="summary-list">
+          <dt>Course</dt>
+          <dd id="summary-course">—</dd>
+          <dt>Format</dt>
+          <dd id="summary-format">Online</dd>
+          <dt>Cohort</dt>
+          <dd id="summary-cohort">—</dd>
+        </dl>
+      </aside>
+    </main>
+
+    <div class="modal" id="success-modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal__backdrop"></div>
+      <div class="modal__content">
+        <div class="modal__icon" aria-hidden="true">✓</div>
+        <h2 id="modal-title" class="modal__title">Registration complete!</h2>
+        <p class="modal__text" id="modal-message">Thank you for signing up. Check your email for confirmation.</p>
+        <button type="button" class="btn btn--primary" id="btn-reset">Register another person</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
